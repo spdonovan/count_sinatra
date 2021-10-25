@@ -3,10 +3,11 @@ require_relative "../../app"
 
 Capybara.app = CounterApp
 
-feature "serve web app" do
-  scenario "should serve home page" do
+feature "decrement the count" do
+  scenario "click the Decrement button and see the number decrement" do
     visit("/")
-    expect(page).to have_button('Increment')
+    expect(page).to have_content 0
+    click_button "Decrement"
     expect(page).to have_button('Decrement')
     expect(page).to have_content -1
   end
